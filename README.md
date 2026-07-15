@@ -5,7 +5,7 @@
 ## 🔗 在线访问
 
 网站已部署到 GitHub Pages，可通过以下链接访问：
-**https://[你的用户名].github.io/qilun-portfolio/**
+**https://Yosh528.github.io/qilun-portfolio/**
 
 ## 📁 项目结构
 
