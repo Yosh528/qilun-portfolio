@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>唐启伦 | 个人作品集</title>
+  <meta name="description" content="唐启伦的个人作品集 - AI 全栈工程师 · 上海商学院">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #F4F7F3;
+      --bg-paper: #FFFFFF;
+      --bg-card: #FFFFFF;
+      --text-primary: #1A1A1A;
+      --text-secondary: #5A6B5A;
+      --text-muted: #8B9B8B;
+      --accent: #4A7C59;
+      --accent-light: #6B9B78;
+      --accent-dark: #3A5C49;
+      --accent-secondary: #2D3436;
+      --vintage-blue: #5B8A8A;
+      --vintage-blue-light: #7FB5B5;
+      --vintage-blue-dark: #3D6B6B;
+      --vintage-green: #6B8E6B;
+      --vintage-green-light: #8FB58F;
+      --vintage-green-dark: #4A6B4A;
+      --vintage-cream: #F5F0E6;
+      --vintage-sage: #8FA896;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+      --border: rgba(0,0,0,0.06);
+      --border-hover: rgba(0,0,0,0.12);
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-24: 6rem;
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      --font-display: 'Playfair Display', 'Noto Serif SC', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      max-width: 100vw;
+      overflow-x: hidden;
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 10% 90%, rgba(74,124,89,0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 10%, rgba(107,158,120,0.06) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(74,124,89,0.03) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    /* 导航栏 */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: var(--space-4) 0;
+      background: rgba(250, 249, 247, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-8);
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text-primary);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Hero 区域 */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      padding: var(--space-1) var(--space-3);
+      background: var(--accent);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--space-4);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: var(--space-6);
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-bottom: var(--space-6);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .hero-advantage {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-6);
+    }
+
+    .advantage-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: rgba(74, 124, 89, 0.1);
+      border-radius: var(--radius-lg);
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .advantage-icon {
+      font-size: 1.1rem;
+    }
+
+    .hero-skills {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-6);
+    }
+
+    .skill-tag {
+      padding: var(--space-1) var(--space-4);
+      background: var(--bg-paper);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .hero-contact {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-6);
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--accent);
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: var(--radius-lg);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: var(--space-8);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+      40% { transform: translateX(-50%) translateY(-10px); }
+      60% { transform: translateX(-50%) translateY(-5px); }
+    }
+
+    /* 装饰线条 */
+    .decoration-line {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
+      border-radius: 2px;
+      margin-bottom: var(--space-4);
+    }
+
+    .decoration-line.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* 作品集区域 */
+    .projects-section {
+      padding: var(--space-24) 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: var(--space-16);
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+      padding: var(--space-8) 0;
+    }
+
+    .project-card {
+      position: relative;
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      cursor: pointer;
+      display: block;
+    }
+
+    .project-card:nth-child(1) { transform: translateY(0) rotate(-1deg); }
+    .project-card:nth-child(2) { transform: translateY(40px) rotate(2deg); margin-top: 60px; }
+    .project-card:nth-child(3) { transform: translateY(-20px) rotate(-1.5deg); }
+    .project-card:nth-child(4) { transform: translateY(60px) rotate(1.5deg); margin-top: 80px; }
+    .project-card:nth-child(5) { transform: translateY(20px) rotate(-2deg); }
+    .project-card:nth-child(6) { transform: translateY(80px) rotate(1deg); margin-top: 100px; }
+
+    .project-card:hover {
+      transform: translateY(-10px) rotate(0deg) scale(1.02) !important;
+      box-shadow: var(--shadow-lg);
+      z-index: 100;
+    }
+
+    .card-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-card:hover .card-image img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: var(--space-6);
+    }
+
+    .card-number {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-2);
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+      color: var(--text-primary);
+    }
+
+    .card-description {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: var(--space-4);
+    }
+
+    .card-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-3);
+    }
+
+    .feature-tag {
+      padding: var(--space-1) var(--space-2);
+      background: var(--vintage-cream);
+      color: var(--vintage-blue-dark);
+      font-size: 0.7rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .tag {
+      padding: var(--space-1) var(--space-3);
+      background: var(--bg-primary);
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(250, 249, 247, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .project-card:hover .card-overlay {
+      opacity: 1;
+    }
+
+    .card-overlay span {
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      background: var(--accent);
+      color: white;
+      border-radius: var(--radius-lg);
+    }
+
+    /* 关于区域 */
+    .about {
+      padding: var(--space-24) 0;
+    }
+
+    .aboutContent {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .aboutText {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-6);
+      line-height: 1.8;
+    }
+
+    .skills {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    /* 页脚 */
+    .footer {
+      padding: var(--space-16) 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-text {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    /* 项目详情模态框 */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      overflow-y: auto;
+      padding: var(--space-8) var(--space-4);
+    }
+
+    .modal.active {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: var(--bg-paper);
+      border-radius: var(--radius-xl);
+      max-width: 900px;
+      width: 100%;
+      margin: var(--space-8) auto;
+      position: relative;
+      animation: modalIn 0.3s ease;
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: var(--space-4);
+      right: var(--space-4);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-primary);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    .modal-image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+
+    .modal-body {
+      padding: var(--space-8);
+    }
+
+    .modal-meta {
+      display: flex;
+      gap: var(--space-8);
+      margin: var(--space-6) 0;
+      padding: var(--space-6) 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .meta-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-value {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .modal-section {
+      margin-bottom: var(--space-6);
+    }
+
+    .modal-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: var(--space-4);
+    }
+
+    .modal-section p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .feature-list {
+      list-style: none;
+    }
+
+    .feature-list li {
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-check {
+      width: 24px;
+      height: 24px;
+      background: var(--vintage-cream);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+      font-weight: bold;
+    }
+
+    .tech-stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .tech-item {
+      padding: var(--space-2) var(--space-3);
+      background: var(--bg-primary);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-6);
+      }
+
+      .project-card:nth-child(even) {
+        transform: translateY(20px);
+        margin-top: 40px;
+      }
+
+      .project-card:nth-child(odd) {
+        transform: translateY(0);
+        margin-top: 0;
+      }
+
+      .project-card:nth-child(2) { margin-top: 40px; }
+      .project-card:nth-child(3) { margin-top: 0; }
+      .project-card:nth-child(4) { margin-top: 40px; }
+      .project-card:nth-child(5) { margin-top: 0; }
+      .project-card:nth-child(6) { margin-top: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+      }
+
+      .project-card {
+        transform: none !important;
+        margin-top: 0 !important;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-advantage,
+      .hero-contact {
+        justify-content: flex-start;
+      }
+
+      .modal-meta {
+        flex-wrap: wrap;
+        gap: var(--space-4);
+      }
+
+      .modal-body {
+        padding: var(--space-6);
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="nav">
+    <div class="container nav-content">
+      <span class="nav-logo">Qilun.</span>
+      <div class="nav-links">
+        <a href="#home" class="nav-link active">首页</a>
+        <a href="#portfolio" class="nav-link">作品集</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero 区域 -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-label">Portfolio</span>
+        <h1 class="hero-title">唐启伦</h1>
+        <p class="hero-subtitle">AI 全栈工程师 · 上海商学院 · 计算机科学与技术</p>
+
+        <div class="hero-advantage">
+          <div class="advantage-item">
+            <span class="advantage-icon">🤖</span>
+            <span>AI Agent 工作流设计</span>
+          </div>
+          <div class="advantage-item">
+            <span class="advantage-icon">💡</span>
+            <span>提示词工程专家</span>
+          </div>
+          <div class="advantage-item">
+            <span class="advantage-icon">🚀</span>
+            <span>全栈开发能力</span>
+          </div>
+        </div>
+
+        <div class="hero-skills">
+          <span class="skill-tag">Claude</span>
+          <span class="skill-tag">MiniMax</span>
+          <span class="skill-tag">Vue</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Docker</span>
+        </div>
+
+        <div class="hero-contact">
+          <a href="tel:18836171889" class="contact-link">📱 18836171889</a>
+          <a href="mailto:3085597549@qq.com" class="contact-link">✉ 3085597549@qq.com</a>
+          <span class="contact-link">📍 上海</span>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#portfolio" class="btn-primary">
+            浏览作品
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>向下滚动</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 作品集区域 -->
+  <section id="portfolio" class="projects-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="decoration-line center"></div>
+        <h2 class="section-title">精选作品</h2>
+        <p class="section-subtitle">每一个项目都是一次独特的创作旅程</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card" onclick="openProject(1)">
+          <div class="card-image">
+            <img src="portfolio/images/1bbd545246d194dd3d645edd506ab92c9d5fed76-960x540.avif" alt="全球账户管理系统">
+          </div>
+          <div class="card-content">
+            <span class="card-number">01</span>
+            <h3 class="card-title">全球账户管理系统</h3>
+            <p class="card-description">支持多语言、多币种的企业级账户管理平台。提供安全的用户认证、权限管理、审计日志等功能。</p>
+            <div class="card-features">
+              <span class="feature-tag">多语言支持</span>
+              <span class="feature-tag">权限管理</span>
+              <span class="feature-tag">审计日志</span>
+            </div>
+            <div class="card-tags">
+              <span class="tag">Java</span>
+              <span class="tag">Spring Boot</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">JWT</span>
+            </div>
+          </div>
+          <div class="card-overlay"><span>点击查看详情 →</span></div>
+        </div>
+
+        <div class="project-card" onclick="openProject(2)">
+          <div class="card-image">
+            <img src="portfolio/images/4ad4c1000f190c64555d5389cb5992d2b12ff23a-960x540.avif" alt="豆包 API 文生图系统">
+          </div>
+          <div class="card-content">
+            <span class="card-number">02</span>
+            <h3 class="card-title">豆包 API 文生图系统</h3>
+            <p class="card-description">基于字节豆包 API 开发的 AI 图像生成工具。支持文生图、图生图、风格迁移等功能。</p>
+            <div class="card-features">
+              <span class="feature-tag">文生图</span>
+              <span class="feature-tag">图生图</span>
+              <span class="feature-tag">风格迁移</span>
+            </div>
+            <div class="card-tags">
+              <span class="tag">Python</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">豆包 API</span>
+              <span class="tag">React</span>
+            </div>
+          </div>
+          <div class="card-overlay"><span>点击查看详情 →</span></div>
+        </div>
+
+        <div class="project-card" onclick="openProject(3)">
+          <div class="card-image">
+            <img src="portfolio/images/a76efbd25cec9845c844377e9d77a2ba8aeb46a5-960x540.avif" alt="小说转剧本系统">
+          </div>
+          <div class="card-content">
+            <span class="card-number">03</span>
+            <h3 class="card-title">小说转剧本系统</h3>
+            <p class="card-description">将小说文本智能转换为剧本格式的工具。支持 YAML/Fountain 格式导出，内置角色管理、场景分割等功能。</p>
+            <div class="card-features">
+              <span class="feature-tag">智能分镜</span>
+              <span class="feature-tag">角色提取</span>
+              <span class="feature-tag">格式转换</span>
+            </div>
+            <div class="card-tags">
+              <span class="tag">Python</span>
+              <span class="tag">NLP</span>
+              <span class="tag">YAML</span>
+              <span class="tag">数据结构</span>
+            </div>
+          </div>
+          <div class="card-overlay"><span>点击查看详情 →</span></div>
+        </div>
+
+        <div class="project-card" onclick="openProject(4)">
+          <div class="card-image">
+            <img src="portfolio/images/微信图片_20260703032616_28_24.jpg" alt="曹魏古城文化旅游网站">
+          </div>
+          <div class="card-content">
+            <span class="card-number">04</span>
+            <h3 class="card-title">曹魏古城文化旅游网站</h3>
+            <p class="card-description">基于 Spring Boot 开发的文化旅游宣传网站。包含景点介绍、票务预订、酒店推荐等功能。</p>
+            <div class="card-features">
+              <span class="feature-tag">景点展示</span>
+              <span class="feature-tag">在线订票</span>
+              <span class="feature-tag">酒店预订</span>
+            </div>
+            <div class="card-tags">
+              <span class="tag">Java</span>
+              <span class="tag">Spring Boot</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">支付集成</span>
+            </div>
+          </div>
+          <div class="card-overlay"><span>点击查看详情 →</span></div>
+        </div>
+
+        <div class="project-card" onclick="openProject(5)">
+          <div class="card-image">
+            <img src="portfolio/images/微信图片_20260703032620_29_24.jpg" alt="个人技术博客系统">
+          </div>
+          <div class="card-content">
+            <span class="card-number">05</span>
+            <h3 class="card-title">个人技术博客系统</h3>
+            <p class="card-description">基于 Astro 开发的静态博客系统，支持 Markdown 写作、代码高亮、SEO 优化。</p>
+            <div class="card-features">
+              <span class="feature-tag">Markdown写作</span>
+              <span class="feature-tag">代码高亮</span>
+              <span class="feature-tag">SEO优化</span>
+            </div>
+            <div class="card-tags">
+              <span class="tag">Astro</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Markdown</span>
+              <span class="tag">SEO</span>
+            </div>
+          </div>
+          <div class="card-overlay"><span>点击查看详情 →</span></div>
+        </div>
+
+        <div class="project-card" onclick="openProject(6)">
+          <div class="card-image">
+            <img src="portfolio/images/微信图片_20260703032621_30_24.jpg" alt="数据可视化仪表盘">
+          </div>
+          <div class="card-content">
+            <span class="card-number">06</span>
+            <h3 class="card-title">数据可视化仪表盘</h3>
+            <p class="card-description">企业级数据可视化平台，支持 20+ 图表类型。支持实时数据推送、拖拽式创建。</p>
+            <div class="card-features">
+              <span class="feature-tag">多图表类型</span>
+              <span class="feature-tag">实时推送</span>
+              <span class="feature-tag">拖拽创建</span>
+            </div>
+            <div class="card-tags">
+              <span class="tag">React</span>
+              <span class="tag">D3.js</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">WebSocket</span>
+            </div>
+          </div>
+          <div class="card-overlay"><span>点击查看详情 →</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于区域 -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="aboutContent">
+        <div class="decoration-line center"></div>
+        <h2 class="section-title">关于我</h2>
+        <p class="aboutText">
+          专注于创造有价值的数字产品。热爱设计，追求简洁优雅的解决方案。
+          具备扎实的编程基础和良好的代码风格，善于将复杂问题简化。
+          期待在 AI 和前端领域不断探索，创造更多可能。
+        </p>
+        <div class="skills">
+          <span class="tag">前端开发</span>
+          <span class="tag">UI/UX 设计</span>
+          <span class="tag">全栈开发</span>
+          <span class="tag">AI 应用</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="footer-text">© 2024 Qilun. All rights reserved.</p>
+      <div class="nav-links">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="nav-link">GitHub</a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="nav-link">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 项目详情模态框 -->
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeProject()">×</button>
+      <img id="modalImage" class="modal-image" src="" alt="">
+      <div class="modal-body">
+        <h1 id="modalTitle" style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: var(--space-4);"></h1>
+        <p id="modalDescription" style="color: var(--text-secondary); font-size: 1.125rem; line-height: 1.7;"></p>
+        
+        <div class="modal-meta">
+          <div class="meta-item">
+            <span class="meta-label">技术栈</span>
+            <span id="modalTech" class="meta-value"></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">角色</span>
+            <span class="meta-value">全栈开发</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">时间</span>
+            <span class="meta-value">2024</span>
+          </div>
+        </div>
+
+        <div class="modal-section">
+          <h2>项目介绍</h2>
+          <p id="modalIntro"></p>
+        </div>
+
+        <div class="modal-section">
+          <h2>核心功能</h2>
+          <ul id="modalFeatures" class="feature-list"></ul>
+        </div>
+
+        <div class="modal-section">
+          <h2>技术栈</h2>
+          <div id="modalTechStack" class="tech-stack-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const projects = {
+      1: {
+        title: '全球账户管理系统',
+        description: '支持多语言、多币种的企业级账户管理平台。提供安全的用户认证、权限管理、审计日志等功能，满足全球化业务需求。',
+        image: 'portfolio/images/1bbd545246d194dd3d645edd506ab92c9d5fed76-960x540.avif',
+        tech: 'Java, Spring Boot, MySQL, JWT',
+        intro: '这是一个面向全球企业的账户管理平台，支持多语言界面、多币种结算、灵活的权限管理体系。系统采用微服务架构，确保高可用性和可扩展性。',
+        features: [
+          '多语言支持：支持中、英、日、韩等 10+ 语言实时切换',
+          '权限管理：基于 RBAC 模型的细粒度权限控制',
+          '审计日志：完整的操作记录，支持追溯和合规审查',
+          'API 接口：RESTful API 设计，支持第三方集成'
+        ],
+        techStack: ['Java', 'Spring Boot', 'MySQL', 'JWT', 'Redis', 'Vue 3', 'TypeScript']
+      },
+      2: {
+        title: '豆包 API 文生图系统',
+        description: '基于字节豆包 API 开发的 AI 图像生成工具。支持文生图、图生图、风格迁移等功能，提供友好的 Web 界面和 API 接口。',
+        image: 'portfolio/images/4ad4c1000f190c64555d5389cb5992d2b12ff23a-960x540.avif',
+        tech: 'Python, FastAPI, 豆包 API, React',
+        intro: '这是一个基于字节跳动豆包 API 的 AI 图像生成平台。用户可以通过文本描述生成图像，也可以上传现有图片进行风格迁移或图生图创作。',
+        features: [
+          '文生图：根据文本描述生成高质量图像',
+          '图生图：基于参考图生成相似风格的新图像',
+          '风格迁移：一键将图像转换为不同艺术风格',
+          '历史记录：保存生成历史，支持图片收藏和下载'
+        ],
+        techStack: ['Python', 'FastAPI', '豆包 API', 'React', 'Tailwind CSS', 'Pillow']
+      },
+      3: {
+        title: '小说转剧本系统',
+        description: '将小说文本智能转换为剧本格式的工具。支持 YAML/Fountain 格式导出，内置角色管理、场景分割、对话提取等核心功能。',
+        image: 'portfolio/images/a76efbd25cec9845c844377e9d77a2ba8aeb46a5-960x540.avif',
+        tech: 'Python, NLP, YAML, 数据结构',
+        intro: '这是一个用于将小说文本智能转换为剧本格式的工具。通过 NLP 技术自动识别角色、对话、场景等元素，生成符合行业标准的剧本文件。',
+        features: [
+          '智能分镜：自动识别场景切换和镜头描述',
+          '角色提取：自动识别并提取对话角色',
+          '格式转换：支持 YAML、Fountain 等多种剧本格式',
+          '导出兼容：生成的文件可直接用于影视制作软件'
+        ],
+        techStack: ['Python', 'NLP', 'spaCy', 'YAML', 'Tkinter']
+      },
+      4: {
+        title: '曹魏古城文化旅游网站',
+        description: '基于 Spring Boot 开发的文化旅游宣传网站。包含景点介绍、票务预订、酒店推荐、游记分享等功能，助力地方文旅宣传。',
+        image: 'portfolio/images/微信图片_20260703032616_28_24.jpg',
+        tech: 'Java, Spring Boot, MySQL, 支付集成',
+        intro: '这是为许昌曹魏古城开发的综合性文化旅游宣传网站，整合了景点展示、在线票务、酒店预订和用户游记等功能，提升游客体验。',
+        features: [
+          '景点展示：720°全景图、视频介绍、虚拟导览',
+          '在线订票：支持预约、实时库存、多种票型',
+          '酒店预订：合作酒店展示、实时房价、预订管理',
+          '游记分享：用户UGC内容、评论互动、打卡功能'
+        ],
+        techStack: ['Java', 'Spring Boot', 'MySQL', 'Redis', 'Vue 3', '支付宝']
+      },
+      5: {
+        title: '个人技术博客系统',
+        description: '基于 Astro 开发的静态博客系统，支持 Markdown 写作、代码高亮、SEO 优化。追求极致的加载性能和阅读体验。',
+        image: 'portfolio/images/微信图片_20260703032620_29_24.jpg',
+        tech: 'Astro, TypeScript, Markdown, SEO',
+        intro: '这是一个追求极简和性能的静态博客系统。使用 Astro 框架实现 islands 架构，配合 MDX 实现富文本内容创作。',
+        features: [
+          'Markdown写作：支持 MDX，嵌入 React 组件',
+          '代码高亮：集成 Shiki，支持 100+ 编程语言',
+          'SEO优化：自动生成 sitemap、Open Graph 标签',
+          '暗色主题：支持自动切换、性能优先的暗色模式'
+        ],
+        techStack: ['Astro', 'TypeScript', 'MDX', 'Shiki', 'Cloudflare']
+      },
+      6: {
+        title: '数据可视化仪表盘',
+        description: '企业级数据可视化平台，支持 20+ 图表类型。支持实时数据推送、拖拽式创建、自定义配置，满足各类数据展示需求。',
+        image: 'portfolio/images/微信图片_20260703032621_30_24.jpg',
+        tech: 'React, D3.js, TypeScript, WebSocket',
+        intro: '这是一个面向企业的数据可视化平台，提供丰富的图表类型和灵活的定制功能。支持实时数据更新和拖拽式仪表盘创建。',
+        features: [
+          '多图表类型：折线图、柱状图、饼图、热力图等 20+ 类型',
+          '实时推送：WebSocket 实现毫秒级数据更新',
+          '拖拽创建：可视化编辑器，快速搭建仪表盘',
+          '数据导出：支持 PNG、CSV、PDF 等格式导出'
+        ],
+        techStack: ['React', 'D3.js', 'ECharts', 'TypeScript', 'WebSocket', 'Node.js']
+      }
+    };
+
+    function openProject(id) {
+      const project = projects[id];
+      if (!project) return;
+
+      document.getElementById('modalTitle').textContent = project.title;
+      document.getElementById('modalDescription').textContent = project.description;
+      document.getElementById('modalImage').src = project.image;
+      document.getElementById('modalTech').textContent = project.tech;
+      document.getElementById('modalIntro').textContent = project.intro;
+
+      const featuresList = document.getElementById('modalFeatures');
+      featuresList.innerHTML = project.features.map(f => 
+        `<li><span class="feature-check">✓</span><span>${f}</span></li>`
+      ).join('');
+
+      const techStack = document.getElementById('modalTechStack');
+      techStack.innerHTML = project.techStack.map(t => 
+        `<span class="tech-item">${t}</span>`
+      ).join('');
+
+      document.getElementById('projectModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProject() {
+      document.getElementById('projectModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // 点击模态框背景关闭
+    document.getElementById('projectModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeProject();
+      }
+    });
+
+    // ESC 键关闭
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeProject();
+      }
+    });
+
+    // 导航高亮
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
